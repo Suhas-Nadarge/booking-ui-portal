@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'igniteui-angular/theming' as *;
+@use 'variables' as *;
+@use 'app-layout';
+
+
+.light-theme {
+    @include igx-light-theme($default-palette);
+}
+
+$grays-btn-color: igx-color($green-palette, 'grays', 800);
+
+/* autoprefixer grid: on */
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+@include igx-core();
+@include igx-typography();
+@include igx-theme(
+    $palette: $palette,
+    $schema: $schema
+);
+
+:root {
+    @include igx-palette-vars($palette);
+}
+
+.light-theme {
+    @include igx-light-theme($palette);
+}
+
+.dark-theme {
+    background: #333;
+    color: #fff;
+    @include igx-dark-theme(
+        $palette: $green-palette
+    );
+
+    .grid-chart-contextmenu-wrapper {
+        @include igx-fluent-dark-theme($fluent-excel-palette);
+    }
+}
+
+.fin-dark-theme {
+    @include igx-dark-theme($green-palette);
+    background: #333;
+
+    ::-moz-placeholder {
+        opacity: 1;
+    }
+}
+
+.body{
+    background-color: #d1cccc;
+}
+
+
+
+.calendar-wrapper {
+    max-width: 600px;
+    min-width: 200px;
+    margin: 8px;
+}
+
+.igx-calendar {
+    box-shadow: igx-elevation($elevation: 4);
+}
+
+
+$custom-calendar-theme: igx-calendar-theme(
+    $header-background: #345779,
+    $content-background: #fdfdfd,
+    $header-text-color: #ffffff,
+    $date-current-text-color: #2dabe8,
+    $picker-arrow-color: #2dabe8, 
+    $date-selected-text-color: #fdfdfd,
+    $date-current-bg-color: #fdfdfd,
+    $picker-arrow-hover-color: #345779,
+    $year-current-text-color: #2dabe8,
+    $year-hover-text-color: #2dabe8,
+    $month-current-text-color: #2dabe8,
+    $month-hover-text-color: #2dabe8,
+    $picker-text-color: #2dabe8,
+    $picker-text-hover-color: #345779,
+);
+
+
+:host ::ng-deep {
+    @include igx-calendar($custom-calendar-theme);
+}
+
+
+
+
+    /*-- Navigation Hover Effects --*/
+.bs4header a.nav-link::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 2px;
+    background: #fff;
+    transition: 0.2s;
+}
+.bs4header a.nav-link:hover::before {
+    width: 100%;
+}
+ 
