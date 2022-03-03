@@ -11,6 +11,7 @@ import {
  } from "igniteui-angular";
 import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgxAutocompleteModule } from 'ngx-angular-autocomplete';
  
 
 @NgModule({
@@ -18,6 +19,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [CommonModule,
     AppointmentsRoutingModule,
     IgxCalendarModule,
+    NgxAutocompleteModule
+
+
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   // exports: [IgxCalendarModule]

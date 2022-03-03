@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginRegisterComponent implements OnInit {
   loginForm!: FormGroup
   showLoginError = false;
-  isLogin = true;
+  isLogin = false;
   constructor(private fb:FormBuilder,public router:Router, 
     public toastr:ToastrService,
     public loginService: LoginService,
