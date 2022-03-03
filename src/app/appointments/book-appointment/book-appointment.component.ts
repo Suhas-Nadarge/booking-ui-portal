@@ -1,3 +1,4 @@
+import { TimeSlots } from './../../../constant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookAppointmentComponent implements OnInit {
 
+  timeSlot = TimeSlots;
   constructor() { }
 
   ngOnInit(): void {
-    alert('called')
   }
-
+  navigateBooking(){}
 }

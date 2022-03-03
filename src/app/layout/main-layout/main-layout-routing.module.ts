@@ -7,14 +7,15 @@ import { MainLayoutComponent } from './main-layout.component';
 const routes: Routes = [
 
   {
-    path: '',
+    
+      path: '',
+      loadChildren: () => import('./../../users/users.module').then(m => m.UsersModule),
+      data: { preload: true, name: 'default' }
+  },
+  {
+    path: 'pages',
     component: MainLayoutComponent,
     children: [
-      {
-        path: 'user',
-        loadChildren: () => import('./../../users/users.module').then(m => m.UsersModule),
-        data: { preload: true, name: 'default' }
-      },
       {
         path: 'appointments',
         loadChildren: () => import('./../../appointments/appointments.module').then(m => m.AppointmentsModule),

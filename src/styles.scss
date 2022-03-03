@@ -108,3 +108,109 @@ $custom-calendar-theme: igx-calendar-theme(
     width: 100%;
 }
  
+
+
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  
+  
+  .main-head{
+    height: 150px;
+    background: #FFF;
+   
+  }
+  
+  .sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  
+  .main {
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+  }
+  
+  @media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+  
+    .register-form{
+        margin-top: 10%;
+    }
+  }
+  
+  @media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+  
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+  
+    .login-form{
+        margin-top: 80%;
+    }
+  
+    .register-form{
+        margin-top: 20%;
+    }
+  }
+  
+  
+  .login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+  }
+  
+  .login-main-text h2{
+    font-weight: 300;
+  }
+  
+  .btn-black{
+    background-color: #000 !important;
+    color: #fff;
+  }@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+  .igx-calendar__header-date, .igx-calendar--vertical .igx-calendar__header-date {
+    font-size: 23px;
+    height: 31px;
+    display: flex;
+    margin: 0;
+}
+
+.igx-calendar__header {
+    background: hsl(241deg 57% 85%);
+    color: var(--header-text-color);
+    padding: 1em;
+    height: 70px;
+}
+
+.igx-calendar__date--current .igx-calendar__date-content {
+    color: hsl(241deg 57% 85%);
+    font-weight: 600;
+    background: var(--date-current-bg-color);
+}
+
+
+.igx-calendar__body {
+    flex: 1 1 auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    overflow: hidden;
+    height: 377px !important;
+}

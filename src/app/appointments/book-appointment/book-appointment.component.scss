@@ -1,3 +1,25 @@
 .main-container{
     margin-top: 20px;
+    align-items: center;
 }
+
+.box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    clear: both;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .green {
+    background-color: green;
+  }
+  
+  .grey {
+    background-color: grey;
+  }

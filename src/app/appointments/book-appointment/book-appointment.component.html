@@ -1,58 +1,117 @@
 
    
-
-<div class="main-container" style="overflow-y: scroll;">
+<div class="card">
+  <div class="card-header">
+    Dr Ace Reddy  
+    <button>Change Doctor</button>
+  </div>
+  <div class="card-body">
+    
+<div class="main-container">
+  <div class="row">
+    <div class="col-md-4">
+      <label for="inputEmail4">Reason for visit:</label>
+          <input type="text" class="form-control" id="inputEmail4" placeholder="">
+    </div>
+    <div class="col-md-4">
+      <label for="inputEmail4">Additional Comments:</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="">
+    </div>
+  </div>
+  <br>
+  <!-- <div class="row">
+    <form>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="inputEmail4">Reason for visit:</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="inputPassword4">Additional Comments:</label>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+        </div>
+      </div>
+      </form>
+      </div> -->
     <div class= "row mx-auto" style="border: aliceblue;">
       <div class="col-md-4">
-        <h6>Book Appointments</h6>
+        <!-- <h6>Book Appointments</h6> -->
         <article class="calendar-wrapper">
           <igx-calendar [weekStart]="1"></igx-calendar>
         </article>
       </div>
         <div class="col-md-4">
   
-     <h6> Available Slots</h6>     
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          
-        </tr>
-      </thead>
+     <h6> Select Slots</h6>     
+    <table class="table table-borderless">
+      
       
 
 
       <tbody>
-        <tr>
+        <tr *ngFor= "let item of timeSlot">
           
-          <td>10:00 AM</td>
-          <td>11:00 AM</td>
-          <td>12:00 PM</td>
-          <td>01:00 PM</td>
+          <td> <button class="col btn btn-light-moon">{{item?.slot_A}}</button></td>
+          <td> <button class="col btn btn-danger">{{item?.slot_B}}</button></td>
+          <td> <button class="col btn btn-secondary" disabled>{{item?.slot_C}}</button></td>
+
+        
   
         </tr>
-        <tr>
-          <td>02:00 PM</td>
-          <td>03:00 PM</td>
-          <td>04:00 PM</td>
-          <td>05:00 PM</td>
-  
-        </tr>
-        <tr>
-          <td>06:00 PM</td>
-          <td>07:00 PM</td>
-          <td>08:00 PM</td>
-          <td>09:00 PM</td>
-  
-        </tr>
+       
       </tbody>
+
+     
+      <!-- <div><div class='box green'></div> &nbsp;Available Appointments</div>
+      <div><div class='box red'></div>&nbsp; Booked Appointments</div>
+      <div><div class='box grey'></div>&nbsp;Not Available</div> -->
+      
     </table>
-    <div>
-      <button>Book Appointment</button>
-    </div>
+
+    <div><div class='box red'></div>&nbsp;Available Appointments</div>
+<br>
+<div><div class='box green'></div>&nbsp; Booked Appointments</div>
+<br>
+<div><div class='box grey'></div>&nbsp;Not Available</div>
+<button type="submit" class="btn btn-primary" style="float: right;">Book Appointment</button>
+
+    <!-- <div>
+      <b>Reason for visit:</b> <input type="text">
+      <b>Additional comments:</b><input type="text">
+      <button class="primary">Book Appointment</button>
+    </div> -->
   
+    </div>
+
+  <!-- <div class="col-md-4">
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="inputEmail4">Reason for visit:</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+       
+      </div>
+      <div class="form-row">
+      
+        <div class="form-group">
+          <label for="inputPassword4">Additional Comments:</label>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+        </div>
+      </div>
+      </form>
+    </div> -->
+</div>
+  <div>
   </div>
+
+ 
+
+  
 
      
   </div>
   </div>
- 
+</div>
