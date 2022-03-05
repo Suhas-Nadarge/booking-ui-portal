@@ -13,26 +13,26 @@
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" routerLinkActive="active" (click)= "router.navigate(['/pages/appointments/view-appointments'])">About Us</a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link" routerLinkActive="active"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" routerLinkActive="active" (click)= "router.navigate(['/pages/appointments/view-appointments'])" >View Appointments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" routerLinkActive="active"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" routerLinkActive="active"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Contact Us</a>
                     </li>
                     <li class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle ml-lg-5" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</button>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">User Name</a>
-                            <a class="dropdown-item" href="#">Setting</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                        <button class="btn btn-warning dropdown-toggle ml-lg-5"(click)= "router.navigate(['/pages/appointments/view-appointments'])" id="navbarDropdownMenuLink" routerLinkActive="active" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" routerLinkActive="active">
+                            <a class="dropdown-item"(click)= "router.navigate(['/pages/appointments/view-appointments'])">User Name</a>
+                            <a class="dropdown-item"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Setting</a>
+                            <a class="dropdown-item"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Logout</a>
                         </div>
                     </li>
                 </ul>
