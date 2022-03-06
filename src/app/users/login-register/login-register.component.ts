@@ -21,20 +21,24 @@ export class LoginRegisterComponent implements OnInit {
     this.createForm();
   }
 
+
   createForm() {
     this.loginForm = this.fb.group({
       email:['',Validators.required],
-      username:['',Validators.required],
+      firstname:['',Validators.required],
+      lastname:['',Validators.required],
       password:['',Validators.required],
-      confirm_password:['',Validators.required]
+      confirm_password:['',Validators.required],
+      isDoctor: '',
+      id: ''
     })
     
   }
 
 
-  login(username:string,password:string){
+  login(email:string,password:string){
     this.showLoginError = false;
-    let requestObj = {username:username,password:password}
+    let requestObj = {email:email,password:password}
 
     // this.loginService.loginUser(requestObj).subscribe((data:any) => {
     //   if(data['status'] === 'success'){

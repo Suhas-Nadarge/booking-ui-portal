@@ -12,6 +12,14 @@ export class BookAppointmentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.updateSlots(new Date().toISOString())
   }
   navigateBooking(){}
+  changeDate(evt:any){
+    console.log(evt);
+    this.updateSlots(evt.toISOString());
+  }
+  updateSlots(date: any) {
+    throw new Error('Method not implemented.');
+  }
 }

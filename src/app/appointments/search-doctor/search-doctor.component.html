@@ -1,17 +1,19 @@
+
 <div class="container justify-content-center">
     <div class="row">
         <div class="col-md-8">
             <div class="input-group mb-3">
                  <!-- <input type="text" class="form-control input-text" placeholder="Search Doctors" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
                  <ngx-autocomplete class="form-control input-text" [searchKeyword]="'name'" 
+                 style="border: none;"
                  [inputId]="'searchEmployee'" 
-                 [placeholderValue]="'Enter the Employee Name'" 
-                 [entries]="employees" 
-                 (selectedValue)="selectEvent($event)">
+                 [placeholderValue]="'Search Doctor'" 
+                 [entries]= "employees" 
+                 (selectedValue)= "selectEvent($event)">
              </ngx-autocomplete>
                 <div class="input-group-append"> <button class="btn btn-outline-warning btn-lg" type="button" (click)= "navigateBooking()"><i class="fa fa-search"></i></button> </div>
             </div>
         </div>
     </div>
-</div>
+
 

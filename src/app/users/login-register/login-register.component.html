@@ -20,36 +20,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <div class="collapse navbar-collapse" id="bs4navbar">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle ml-lg-5" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</button>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">User Name</a>
-                            <a class="dropdown-item" href="#">Setting</a>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </div> -->
+           
         </nav>
     </div>
 </header> 
@@ -67,44 +38,11 @@
          </div>
       </div>
       
-      <div class="main" *ngIf= "false">
-        <!--Refered and Modified by Suhas from https://bbbootstrap.com/snippets/bootstrap-simple-tabbed-login-register-form-29443624 -->
-        <div class="d-flex justify-content-center align-items-center mt-5">
-            <div class="card">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> 
-                    <li class="nav-item text-center"> <a class="nav-link active btl"  id="pills-home-tab" data-toggle="pill"  role="tab" aria-controls="pills-home" (click)="isLogin=!isLogin" aria-selected="isLogin">Login</a> </li>
-                    <li class="nav-item text-center"> <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" role="tab" aria-controls="pills-profile" (click)="isLogin=!isLogin" aria-selected="!isLogin">Signup</a> </li>
-                </ul>
-                <form [formGroup]="loginForm">
-                <div class="tab-content">
-                    <div *ngIf="isLogin" class="tab-pane fade show active" aria-labelledby="pills-home-tab">
-                        <div class="form px-4 pt-5">
-                             <input type="text" formControlName="username" class="form-control" placeholder="Email or Phone">
-                             <input type="password" formControlName="password" class="form-control" placeholder="Password">
-                             <button class="col btn btn-light-moon">Dark Moon</button>
-                             
-                             <!-- <button class="btn btn-dark btn-block" (click)="login(loginForm.get('username')?.value,loginForm.get('password')?.value)">Login</button>  -->
-                        </div>
-                    </div>
-                    <div *ngIf="!isLogin" class="tab-pane fade show active" aria-labelledby="pills-profile-tab">
-                        <div class="form px-4"> 
-                            <input type="text" formControlName="username" class="form-control" placeholder="Username"> 
-                            <input type="text" formControlName="email" class="form-control" placeholder="Email"> 
-                            <input type="password" formControlName="password" class="form-control" placeholder="Password">
-                            <!-- <input type="text" formControlName="confirm_password" class="form-control" placeholder="Confirm Password"> 
-                            <div *ngIf="showErr" style="color: red;">Password Not macthed</div> -->
-                             <button class="btn btn-dark btn-block" (click)="registerUser()">Signup</button> </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-                
-            </div>
+      
      
             <div class="container d-flex justify-content-center" style="margin-left: 255px;">
                 <div class="d-flex flex-column justify-content-between">
-                    <div class="card mt-3 p-5" style="height: inherit;width: 450px;">
+                    <div class="card mt-3 p-5" style="height: 193px;width: 450px;">
                         <!-- <div class="logo mb-3"><img src="https://imgur.com/zydrQCr.png"></div> -->
                         <div>
                             <p class="mb-1">Start booking your</p>
@@ -113,16 +51,39 @@
                         </div> 
                     </div>
                     <div class="card two bg-white px-5 py-4 mb-3">
-                        <div class="form-group"><input type="email" autocomplete="off"   class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label></div>
-                        <div class="form-group" *ngIf= "!isLogin">
+                          <div class="form-group" *ngIf= "!isLogin">
                             <input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">First Name</label></div>
                             
                              <div class="form-group" *ngIf= "!isLogin">
                             <input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">Last Name</label>
 
                         </div> 
+                        <div class="form-group">
+                            <input type="email" autocomplete="off"   class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label>
+                        </div>
+                            
+                            <!-- <div class="form-group" *ngIf= "!isLogin">
+                                <select class="form-control form-control-sm" formControlName="isDoctor">
+                                    <option disabled  class="form-control-placeholder">Select Role</option>
+                                    <option [value]= "true"> Doctor</option>
+                                    <option [value]= "false">Patient</option>
+                                  </select>
+
+                        </div> -->
+                        <div class="form-group" *ngIf= "!isLogin">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select Role</option>
+                            <option value="true">Doctor</option>
+                            <option value="false">Patient</option>
+                          </select>
+</div>                       
+
+                      
                         <!-- <div class="form-group" *ngIf= "!isLogin"><input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">Age</label> </div> -->
-                        <div class="form-group"><input type="password"  class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label></div>
+                        <div class="form-group">
+                            <input type="password"  class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label>
+                        
+                        </div>
                          <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"  *ngIf= "isLogin" (click)= "isLogin= !isLogin"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
                          <button class="btn btn-primary btn-lg" *ngIf= "!isLogin" (click)= "isLogin= !isLogin"><small>Already signed up?</small><span>&nbsp;Log in</span> </button>
                          <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"  *ngIf= "isLogin" (click)= "isLogin= !isLogin;login('','')">Sign In</button>
@@ -131,3 +92,4 @@
                         </div>
                 </div>
             </div>
+

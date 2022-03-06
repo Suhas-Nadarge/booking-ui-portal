@@ -1,5 +1,6 @@
 
-   
+
+<div class="container">
 <div class="card">
   <div class="card-header">
     Dr Ace Reddy  
@@ -9,70 +10,49 @@
     
 <div class="main-container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <label for="inputEmail4">Reason for visit:</label>
           <input type="text" class="form-control" id="inputEmail4" placeholder="">
     </div>
+    <div class="col-md-1"></div>
+
     <div class="col-md-4">
       <label for="inputEmail4">Additional Comments:</label>
       <input type="text" class="form-control" id="inputEmail4" placeholder="">
     </div>
   </div>
   <br>
-  <!-- <div class="row">
-    <form>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="inputEmail4">Reason for visit:</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="inputPassword4">Additional Comments:</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-        </div>
-      </div>
-      </form>
-      </div> -->
+  
     <div class= "row mx-auto" style="border: aliceblue;">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <!-- <h6>Book Appointments</h6> -->
         <article class="calendar-wrapper">
-          <igx-calendar [weekStart]="1"></igx-calendar>
+          <igx-calendar [weekStart]="1" (selected)= "changeDate($event)"></igx-calendar>
         </article>
       </div>
+    <div class="col-md-1"></div>
+
         <div class="col-md-4">
   
      <h6> Select Slots</h6>     
     <table class="table table-borderless">
       
-      
-
 
       <tbody>
         <tr *ngFor= "let item of timeSlot">
-          
           <td> <button class="col btn btn-light-moon">{{item?.slot_A}}</button></td>
           <td> <button class="col btn btn-danger">{{item?.slot_B}}</button></td>
           <td> <button class="col btn btn-secondary" disabled>{{item?.slot_C}}</button></td>
-
         
-  
         </tr>
        
       </tbody>
 
-     
-      <!-- <div><div class='box green'></div> &nbsp;Available Appointments</div>
-      <div><div class='box red'></div>&nbsp; Booked Appointments</div>
-      <div><div class='box grey'></div>&nbsp;Not Available</div> -->
-      
     </table>
 
-    <div><div class='box red'></div>&nbsp;Available Appointments</div>
+    <div><div class='box green'></div>&nbsp;Available Appointments</div>
 <br>
-<div><div class='box green'></div>&nbsp; Booked Appointments</div>
+<div><div class='box red'></div>&nbsp; Booked Appointments</div>
 <br>
 <div><div class='box grey'></div>&nbsp;Not Available</div>
 <button type="submit" class="btn btn-primary" style="float: right;">Book Appointment</button>
@@ -114,4 +94,5 @@
      
   </div>
   </div>
+</div>
 </div>
