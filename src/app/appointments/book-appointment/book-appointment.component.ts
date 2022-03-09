@@ -12,7 +12,6 @@ export class BookAppointmentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.updateSlots(new Date().toISOString())
   }
   navigateBooking(){}
   changeDate(evt:any){
@@ -20,6 +19,13 @@ export class BookAppointmentComponent implements OnInit {
     this.updateSlots(evt.toISOString());
   }
   updateSlots(date: any) {
-    throw new Error('Method not implemented.');
+    this.timeSlot.filter(data=> {
+      data.slot_A.isAvailable = true;
+      data.slot_B.isAvailable = true;
+      data.slot_C.isAvailable = true;
+    });
+  }
+  selectSlot(id: any, slot: any){
+    console.log(id,slot)
   }
 }
