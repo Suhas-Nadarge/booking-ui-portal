@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { TimeSlots } from './../../../constant';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,8 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class BookAppointmentComponent implements OnInit {
 
   timeSlot = TimeSlots;
-  constructor() { }
-
+  constructor(public router: Router) { }
+  isBooked = false;
   ngOnInit(): void {
   }
   navigateBooking(){}
@@ -27,5 +28,9 @@ export class BookAppointmentComponent implements OnInit {
   }
   selectSlot(id: any, slot: any){
     console.log(id,slot)
+  }
+
+  bookAppointment(){
+    this.isBooked = true;
   }
 }
