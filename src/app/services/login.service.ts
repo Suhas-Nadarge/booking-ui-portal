@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -13,11 +14,11 @@ export class LoginService {
   constructor(public _http: HttpClient) { }
 
   registerUser(requestObj: any): any{
-    return this._http.post('http://127.0.0.1:5000/register', requestObj,this.httpOptions);
+    return this._http.post(`${environment.base_url}/register`, requestObj,this.httpOptions);
   }
 
   loginUser(requestObj: any): any{
-    return this._http.post('http://127.0.0.1:5000/login', requestObj,this.httpOptions);
+    return this._http.post(`${environment.base_url}/login`, requestObj,this.httpOptions);
   }
   
 }

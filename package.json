@@ -9,7 +9,6 @@
     "heroku-postbuild": "ng build --prod",
     "postinstall": "ng build --output-path booking-ui-portal --aot --prod",
     "start": "node server.js"
-
   },
   "private": true,
   "dependencies": {
@@ -26,6 +25,7 @@
     "angular-animations": "^0.11.0",
     "bootstrap": "^5.1.3",
     "core-js": "2.6.2",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "hammerjs": "^2.0.8",
     "igniteui-angular": "13.0.0",

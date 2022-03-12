@@ -3,16 +3,8 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!-- Template copied by Suhas from 'https://bootsnipp.com/snippets/7nk08'  and added form controls and logic -->
-<!-- <div class="sidenav">
-         <div class="login-main-text">
-            <h2>Want to send Email in Bulk?<br></h2>
-            <p>Register with us and enjoy unlimited access to Bulk Emailer</p>
-         </div>
-      </div> -->
-      
-      
 
+    
 <header class="bs4header bg-primary">
     <div class="main-header">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -30,18 +22,16 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!-- Template copied  and added form controls and logic by Suhas from 'https://bootsnipp.com/snippets/7nk08'  -->
 <div class="sidenav">
          <div class="login-main-text">
-            <!-- <h2>Want to send Email in Bulk?<br></h2>
-            <p>Register with us and enjoy unlimited access to Bulk Emailer</p> -->
+            
          </div>
       </div>
       
       
      
             <div class="container d-flex justify-content-center" style="margin-left: 255px;">
-                <div class="d-flex flex-column justify-content-between">
+                <div class="d-flex flex-column justify-content-between" style="margin-top: -8px;">
                     <div class="card mt-3 p-5" style="height: 193px;width: 450px;">
                         <!-- <div class="logo mb-3"><img src="https://imgur.com/zydrQCr.png"></div> -->
                         <div>
@@ -50,28 +40,21 @@
                             
                         </div> 
                     </div>
-                    <div class="card two bg-white px-5 py-4 mb-3">
+                    <div class="card two bg-white px-5 py-4 mb-3" [formGroup]= "loginForm">
                           <div class="form-group" *ngIf= "!isLogin">
-                            <input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">First Name</label></div>
+                            <input type="text"  class="form-control" formControlName="firstname" id="name" required><label class="form-control-placeholder" for="name">First Name</label></div>
                             
                              <div class="form-group" *ngIf= "!isLogin">
-                            <input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">Last Name</label>
+                            <input type="text"  class="form-control" id="name" formControlName="lastname" required><label class="form-control-placeholder" for="name">Last Name</label>
 
                         </div> 
                         <div class="form-group">
-                            <input type="email" autocomplete="off"   class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label>
+                            <input type="email" autocomplete="off" formControlName="email"   class="form-control" id="mail" required><label class="form-control-placeholder" for="mail">Email</label>
                         </div>
                             
-                            <!-- <div class="form-group" *ngIf= "!isLogin">
-                                <select class="form-control form-control-sm" formControlName="isDoctor">
-                                    <option disabled  class="form-control-placeholder">Select Role</option>
-                                    <option [value]= "true"> Doctor</option>
-                                    <option [value]= "false">Patient</option>
-                                  </select>
-
-                        </div> -->
+    
                         <div class="form-group" *ngIf= "!isLogin">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" formControlName="isDoctor" aria-label="Default select example">
                             <option selected>Select Role</option>
                             <option value="true">Doctor</option>
                             <option value="false">Patient</option>
@@ -81,13 +64,13 @@
                       
                         <!-- <div class="form-group" *ngIf= "!isLogin"><input type="text"  class="form-control" id="name" required><label class="form-control-placeholder" for="name">Age</label> </div> -->
                         <div class="form-group">
-                            <input type="password"  class="form-control" id="password" required><label class="form-control-placeholder" for="password">Password</label>
+                            <input type="password"  class="form-control" formControlName= "password" id="password" required><label class="form-control-placeholder" for="password">Password</label>
                         
                         </div>
                          <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"  *ngIf= "isLogin" (click)= "isLogin= !isLogin"><span>Get started<i class="fas fa-long-arrow-alt-right ml-2"></i></span></button>
                          <button class="btn btn-primary btn-lg" *ngIf= "!isLogin" (click)= "isLogin= !isLogin"><small>Already signed up?</small><span>&nbsp;Log in</span> </button>
-                         <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"  *ngIf= "isLogin" (click)= "isLogin= !isLogin;login('','')">Sign In</button>
-                         <button class="btn btn-primary btn-lg" *ngIf= "!isLogin" (click)= "isLogin= !isLogin">Sign Up</button>
+                         <button class="btn btn-primary btn-block btn-lg mt-1 mb-2"  *ngIf= "isLogin" (click)= "isLogin= !isLogin;login()">Sign In</button>
+                         <button class="btn btn-primary btn-lg" style="margin-top: -24px;" *ngIf= "!isLogin" (click)= "registerUser();isLogin= !isLogin">Sign Up</button>
                        
                         </div>
                 </div>

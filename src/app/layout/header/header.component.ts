@@ -10,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   constructor(public router: Router) { }
-
+  
   ngOnInit(): void {
+  }
+
+  logout(): any{
+    localStorage.clear();
+    this.router.navigate([''])
   }
 
 }

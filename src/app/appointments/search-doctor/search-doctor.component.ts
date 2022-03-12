@@ -1,3 +1,4 @@
+import { AppointmentService } from './../../services/appointment.service';
 import { Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,40 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchDoctorComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  allDocList = []
+  constructor(public router: Router, public appService: AppointmentService) { }
 
   ngOnInit(): void {
+    this.getAllDocs();
+  }
+
+  getAllDocs() {
+    this.appService.getAllDoctors().subscribe((data: any) =>{
+      if(data){
+        this.allDocList = data['doctors'];
+      }
+    });
   }
 
   navigateBooking(){
-this.router.navigate(['/pages/appointments/book-appointment'])
+    // this.router.navigate(['/pages/appointments/book-appointment'])
   }
-  public employees = [
-    {
-      "id": 1,
-      "name": "Parsifal",
-      "gender": "Male"
-    }, {
-      "id": 2,
-      "name": "Mirabel",
-      "gender": "Female"
-    }, {
-      "id": 3,
-      "name": "Verne",
-      "gender": "Male"
-    }, {
-      "id": 4,
-      "name": "Julissa",
-      "gender": "Female"
-    }, {
-      "id": 5,
-      "name": "Chaddy",
-      "gender": "Male"
-    }, {
-      "id": 6,
-      "name": "Cosme",
-      "gender": "Male"
-    }]
+ 
   selectEvent(event:any) {
     console.log(event)
+    this.router.navigate(['/pages/appointments/book-appointment'],{ state: { _id: event.id, full_name: event.full_name} })
  }}
