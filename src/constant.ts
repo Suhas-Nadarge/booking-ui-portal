@@ -22,6 +22,7 @@ export const TimeSlots = [
     slot_B: {id:11, value: '07:00 PM ', isAvailable: true },
     slot_C: {id:12, value: '08:00 PM ', isAvailable: true },
   }
+
 ];
 
 // export const TimeSlots_ = [
@@ -169,6 +170,26 @@ export const appointmentList = [
         'fullname': 'Prathmesh More',
         'reason': 'Lai Bhari watata ahe',
         'time': '23-09-2022 09:00 AM',
+        'status':'Due',
+        'isCancelled': false
+    },
+    {
+        'fullname': 'Pranav Zaad',
+        'reason': 'Gand Bharliye',
+        'time': '24-09-2022 09:00 AM',
+        'status':'Due',
+        'isCancelled': false
+    },{
+        'fullname': 'Pranav Zaad',
+        'reason': 'Gand Bharliye',
+        'time': '24-09-2022 09:00 AM',
+        'status':'Due',
+        'isCancelled': false
+    },
+    {
+        'fullname': 'Pranav Zaad',
+        'reason': 'Gand Bharliye',
+        'time': '24-09-2022 09:00 AM',
         'status':'Due',
         'isCancelled': false
     },

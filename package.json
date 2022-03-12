@@ -34,10 +34,10 @@
     "jszip": "^3.7.1",
     "mdb-angular-ui-kit": "^1.6.1",
     "ngx-angular-autocomplete": "^1.0.7",
-    "ngx-toastr": "^14.2.1",
     "rxjs": "^6.6.7",
     "tslib": "^2.3.1",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "ng6-toastr-notifications": "^1.0.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.2.5",

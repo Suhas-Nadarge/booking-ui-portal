@@ -1,7 +1,7 @@
 
 
 <div class="container">
-<div class="card" *ngIf= "!isBooked">
+<div class="card">
   <div class="card-header">
     Dr {{doc_full_Name}}:  
     <!-- <a href="#" class="link-dark" (click)= "router.navigate(['/pages/appointments/search'])">Change <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
@@ -14,17 +14,17 @@
   </div>
   <div class="card-body">
     
-<div class="main-container">
+<div class="main-container" [formGroup] = "bookingForm">
   <div class="row">
     <div class="col-md-5">
-      <label for="inputEmail4">Reason for visit:</label>
-          <input type="text" class="form-control" id="inputEmail4" placeholder="">
+      <label for="inputEmail4"><b>Reason for visit:</b></label>
+          <input type="text" formControlName="reason" class="form-control" id="inputEmail4" placeholder="">
     </div>
     <div class="col-md-1"></div>
 
     <div class="col-md-4">
-      <label for="inputEmail4">Additional Comments:</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="">
+      <label for="inputEmail4"><b>Additional Comments:</b></label>
+      <input type="text" formControlName="additional_comments" class="form-control" id="inputEmail4" placeholder="">
     </div>
   </div>
   <br>
@@ -47,9 +47,9 @@
       <tbody>
         <tr *ngFor= "let item of timeSlot; let i = index">
           <!-- {{i}} -->
-          <td> <button type="button" [ngClass] = "item.slot_A.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_A?.isAvailable" (click)= "selectSlot(i,item?.slot_A?.value)">{{item?.slot_A?.value}}</button></td>
-          <td> <button [ngClass] = "item.slot_B.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_B?.isAvailable" (click)= "selectSlot(i,item?.slot_B?.value)" >{{item?.slot_B?.value}}</button></td>
-          <td> <button [ngClass] = "item.slot_C.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_C?.isAvailable" (click)= "selectSlot(i,item?.slot_C?.value)">{{item?.slot_C?.value}}</button></td>
+          <td> <button type="button" [ngClass] = "item.slot_A.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_A?.isAvailable" (click)= "selectSlot(item?.slot_A?.id,item?.slot_A?.value)">{{item?.slot_A?.value}}</button></td>
+          <td> <button [ngClass] = "item.slot_B.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_B?.isAvailable" (click)= "selectSlot(item?.slot_B?.id,item?.slot_B?.value)" >{{item?.slot_B?.value}}</button></td>
+          <td> <button [ngClass] = "item.slot_C.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'" [disabled]= "!item?.slot_C?.isAvailable" (click)= "selectSlot(item?.slot_C?.id,item?.slot_C?.value)">{{item?.slot_C?.value}}</button></td>
         
         </tr>
        
@@ -102,7 +102,7 @@
   </div>
   </div>
 </div>
-<div *ngIf= "isBooked">
+<div *ngIf= "false">
   <div class="jumbotron text-center" style="flex:1 1 auto;">
     <h1 class="display-3">Thank You!</h1>
     <p class="lead"><strong>Please check your email</strong> for further details regarding appointments</p>

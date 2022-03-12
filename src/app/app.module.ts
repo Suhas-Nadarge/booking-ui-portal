@@ -10,8 +10,8 @@ import {
 	IgxCalendarModule,
 	IgxDialogModule
  } from "igniteui-angular";
- import { ToastrModule as ToastsModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 @NgModule({
   declarations: [
@@ -19,12 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    ToastsModule.forRoot(), // ToastModule added
+    ToastrModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastsModule.forRoot(),
     BrowserAnimationsModule,
     NoopAnimationsModule
   ],

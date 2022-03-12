@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../../services/login.service';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-login-register',
@@ -14,7 +14,7 @@ export class LoginRegisterComponent implements OnInit {
   showLoginError = false;
   isLogin = false;
   constructor(private fb:FormBuilder,public router:Router, 
-    public toastr:ToastrService,
+    public toastr:ToastrManager,
     public loginService: LoginService,
     ) { }
   ngOnInit(): void {
@@ -37,25 +37,25 @@ export class LoginRegisterComponent implements OnInit {
 
 
   login(){
-    this.router.navigate(['/pages/appointments/search'])
-
     this.showLoginError = false;
     let requestObj = this.loginForm.value;
 console.log(requestObj)
     this.loginService.loginUser(requestObj).subscribe((data:any) => {
       if(data['status'] === 'success'){
-        localStorage.setItem('userObj',data);
-        // localStorage.setItem('isDoctor', data.isDoctor)
+        console.log(data)
+        localStorage.setItem('isDoctor', data.isDoctor)
+        localStorage.setItem('id', data.id)
+
         this.router.navigate(['/pages/appointments/search'])
-      this.toastr.success('Logged in successfully!', 'Success');
+      this.toastr.successToastr('Logged in successfully!', 'Success');
       } else {
         this.showLoginError = true;
-        this.toastr.error('Please enter valid credentials.')
+        this.toastr.errorToastr('Please enter valid credentials.')
       }
       console.log(data);
     },
     (err: any)=>{
-      this.toastr.error(err['error']['message'] ? err['error']['message'] : 'Please enter valid credentials!', 'Error');
+      this.toastr.errorToastr(err['error']['message'] ? err['error']['message'] : 'Please enter valid credentials!', 'Error');
     });
     // this.router.navigate(['/pages/appointments/search'])
 }
@@ -65,10 +65,10 @@ registerUser(): any{
   {
     this.showLoginError = false;
     let requestObj = this.loginForm?.value;
-    console.log(requestObj)
+    requestObj['isDoctor'] = JSON.parse(requestObj['isDoctor'])
     this.loginService.registerUser(requestObj).subscribe((data:any) => {
       if(data['status'] === 'success'){
-      this.toastr.success('User Registered successfully, check your mail for the confirmation!', 'Success');
+      this.toastr.successToastr('User Registered successfully, check your mail for the confirmation!', 'Success');
       this.loginForm.reset();
       this.isLogin = true;
       // this.router.navigate(['/login'])
@@ -79,7 +79,7 @@ registerUser(): any{
       console.log(data);
     },
     (err: any)=>{
-      this.toastr.error(err['error']['message'] ? err['error']['message'] : 'Something went wrong!', 'Error');
+      this.toastr.errorToastr(err['error']['message'] ? err['error']['message'] : 'Something went wrong!', 'Error');
     console.log(err['error']['message'])
     });
 

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxAutocompleteModule } from 'ngx-angular-autocomplete';
 import { PatientHistoryComponent } from './patient-history/patient-history.component';
+import { ReactiveFormsModule } from '@angular/forms';
  
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PatientHistoryComponent } from './patient-history/patient-history.compo
   imports: [CommonModule,
     AppointmentsRoutingModule,
     IgxCalendarModule,
-    NgxAutocompleteModule
+    NgxAutocompleteModule,
+    ReactiveFormsModule
 
 
   ],

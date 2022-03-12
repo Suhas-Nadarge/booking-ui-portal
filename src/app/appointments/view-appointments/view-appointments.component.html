@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <br>
     <h2>All Appointments</h2>
 <table class="table table-bordered">
     <thead>
@@ -28,7 +29,7 @@
      
       <tr>
         <!-- <th scope="row">3</th> -->
-        <td colspan="5" style="text-align: center;" >No Appointments</td>
+        <td colspan="5" style="text-align: center;" *ngIf= "!appointmentList?.length">No Appointments</td>
       </tr>
     </tbody>
     
