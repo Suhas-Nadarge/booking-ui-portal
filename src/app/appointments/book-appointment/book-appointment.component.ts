@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { TimeSlots } from './../../../constant';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormGroupName, FormBuilder, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-book-appointment',
@@ -17,7 +19,7 @@ export class BookAppointmentComponent implements OnInit {
   userObj : any
   bookingForm!: FormGroup;
   doc_full_Name = '';
-  constructor(public router: Router, public fb: FormBuilder, public appService:AppointmentService) {
+  constructor(public router: Router, public fb: FormBuilder, public toastr:ToastrManager ,public appService:AppointmentService, private spinnerService: NgxSpinnerService) {
     this.id = this.router.getCurrentNavigation()?.extras.state?._id
     this.doc_full_Name = this.router.getCurrentNavigation()?.extras.state?.full_name
     if(!this.id) {
@@ -26,9 +28,9 @@ export class BookAppointmentComponent implements OnInit {
    }
   isBooked = false;
   ngOnInit(): void {
-    console.log
-    this.appService.getDayAppointments(this.id).subscribe((data:any)=>{
-    // this.userObj = 
+    this.spinnerService.show();
+    this.appService.getDocsAppointments(this.id).subscribe((data:any)=>{
+    this.spinnerService.hide();
       console.log(data)
       this.createForm();
     
@@ -41,6 +43,7 @@ export class BookAppointmentComponent implements OnInit {
       slot_number:['',Validators.required],
       appointment_date:['',Validators.required],
       doctors_id: this.id,
+      slot:'',
       patient_id: Number(localStorage.getItem('id'))
     })
 
@@ -54,6 +57,7 @@ export class BookAppointmentComponent implements OnInit {
   }
   navigateBooking(){}
   changeDate(evt:any){
+    this.spinnerService.show();
     console.log(evt);
     this.bookingForm.get('appointment_date')?.setValue(new Date(evt))
 
@@ -65,16 +69,24 @@ export class BookAppointmentComponent implements OnInit {
       data.slot_B.isAvailable = true;
       data.slot_C.isAvailable = true;
     });
+    this.spinnerService.hide();
+
   }
   selectSlot(id: any, slot: any){
     this.bookingForm.get('slot_number')?.setValue(id)
+    this.bookingForm.get('slot')?.setValue(slot)
     console.log(id,slot)
   }
 
   bookAppointment(){
-    this.isBooked = true;
-
+    this.spinnerService.show();
     this.appService.bookAppointment(this.bookingForm.value).subscribe((data: any)=>{
+      if(data){
+      this.spinnerService.hide(); 
+      this.toastr.successToastr('Appointment Booked Successfully!', 'Success');
+      this.isBooked = true;
+      }
+
     });
   }
 }

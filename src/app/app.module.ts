@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { 
 	IgxCalendarModule,
@@ -25,7 +26,8 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgxSpinnerModule
   ],
   exports : [],
   providers: [],

@@ -21,8 +21,8 @@ export class AppointmentService {
     return this._http.post(`${environment.base_url}/bookAppointment`, requestObj,this.httpOptions);
   }
 
-  getDayAppointments(id: any): any{
-    return this._http.get(`${environment.base_url}/getDayAppointments/${id}`,this.httpOptions);
+  getDocsAppointments(id: any): any{
+    return this._http.get(`${environment.base_url}/getDocsAppointments/${id}`,this.httpOptions);
   }
   
   cancelAppointment(requestObj: any): any{

@@ -16,11 +16,11 @@
     <tbody>
       <tr *ngFor= "let item of appointmentList; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td>{{item?.fullname}}</td>
+        <td>{{item?.patient_name}}</td>
         <td>{{item?.reason}}</td>
-        <td>{{item?.time}}</td>
-        <td>{{item?.status}}</td>
-
+        <td>{{item?.appointment_date}}</td>
+        <!-- <td>{{item?.status}}</td> -->
+        <td>Due</td>
         <td *ngIf= "!item?.isCancelled"><Button class="btn btn-danger btn-sm" (click)= "cancelAppointment(i)"> Cancel </Button></td>
         <td *ngIf= "item?.isCancelled"><Button class="btn btn-secondary btn-sm" disabled> Cancelled </Button></td>
 
@@ -28,7 +28,7 @@
       </tr>
      
       <tr>
-        <!-- <th scope="row">3</th> -->
+        
         <td colspan="5" style="text-align: center;" *ngIf= "!appointmentList?.length">No Appointments</td>
       </tr>
     </tbody>

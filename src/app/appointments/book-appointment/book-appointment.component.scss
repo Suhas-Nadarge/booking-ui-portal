@@ -28,3 +28,18 @@
  .container, .container-lg, .container-md, .container-sm, .container-xl {
     max-width: 1600px;
 }
+
+.btn.btn-success:active,
+.btn.btn-success:active {
+    border-color: rgb(158, 152, 152);
+    background-color: rgb(167, 156, 156);
+    // color: $color-primary;
+}
+
+.button:hover {background-color: #081808}
+
+.button:active {
+  background-color: #8e4a3e;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
