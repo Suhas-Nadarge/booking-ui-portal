@@ -1,3 +1,4 @@
+import { PatientHistoryComponent } from './patient-history/patient-history.component';
 import { ViewAppointmentsComponent } from './view-appointments/view-appointments.component';
 import { SearchDoctorComponent } from './search-doctor/search-doctor.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
@@ -17,7 +18,11 @@ const routes: Routes = [{
 {
   path: 'view-appointments',
   component: ViewAppointmentsComponent
-}
+},
+{
+  path: 'history',
+  component: PatientHistoryComponent
+},
 
 ];
 

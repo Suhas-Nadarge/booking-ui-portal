@@ -36,10 +36,12 @@
     // color: $color-primary;
 }
 
-.button:hover {background-color: #081808}
 
-.button:active {
-  background-color: #8e4a3e;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+
+button:hover{
+  background-color:rgb(47, 202, 33);
+}
+
+button:focus{
+  background-color:hsl(241deg 57% 85%);
 }

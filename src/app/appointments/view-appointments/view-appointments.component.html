@@ -1,7 +1,8 @@
 <div class="container mt-5">
   <br>
-    <h2>All Appointments</h2>
-<table class="table table-bordered">
+  <h2>All Appointments</h2>
+  <br>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col" class="w-10"><b>#</b></th>
@@ -14,24 +15,24 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor= "let item of appointmentList; let i = index">
+      <tr *ngFor="let item of appointmentList; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{item?.patient_name}}</td>
         <td>{{item?.reason}}</td>
-        <td>{{item?.appointment_date}}</td>
-        <!-- <td>{{item?.status}}</td> -->
-        <td>Due</td>
-        <td *ngIf= "!item?.isCancelled"><Button class="btn btn-danger btn-sm" (click)= "cancelAppointment(i)"> Cancel </Button></td>
-        <td *ngIf= "item?.isCancelled"><Button class="btn btn-secondary btn-sm" disabled> Cancelled </Button></td>
+        <td>{{item?.appointment_date | date: 'mediumDate'}} {{" "+item?.slot}}</td>
+        <td>{{item?.isCancelled ? 'Cancelled' : 'Due'}}</td>
+        <td *ngIf="!item?.isCancelled"><Button class="btn btn-danger btn-sm" (click)="cancelAppointment(i)"> Cancel
+          </Button></td>
+        <td *ngIf="item?.isCancelled"><Button class="btn btn-secondary btn-sm" disabled> Cancelled </Button></td>
 
 
       </tr>
-     
+
       <tr>
-        
-        <td colspan="5" style="text-align: center;" *ngIf= "!appointmentList?.length">No Appointments</td>
+
+        <td colspan="5" style="text-align: center;" *ngIf="!appointmentList?.length">No Appointments</td>
       </tr>
     </tbody>
-    
+
   </table>
 </div>

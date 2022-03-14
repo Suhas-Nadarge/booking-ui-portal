@@ -1,4 +1,4 @@
-export const TimeSlots = [
+export const  TimeSlots = [
   {
     slot_A: {id:1, value: '09:00 AM ', isAvailable: true },
     slot_B: {id:2, value: '10:00 AM ', isAvailable: true },

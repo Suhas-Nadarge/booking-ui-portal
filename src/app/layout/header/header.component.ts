@@ -21,4 +21,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([''])
   }
 
+  navigateHome(){
+    if(localStorage.getItem('isDoctor')){
+      this.router.navigate(['/pages/appointments/view-appointments'])
+    } else {
+      this.router.navigate(['/pages/appointments/search'])
+    }
+  }
+
 }
