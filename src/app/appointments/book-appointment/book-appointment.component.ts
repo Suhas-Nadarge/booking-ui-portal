@@ -42,11 +42,7 @@ export class BookAppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.refreshSlots();
-    this.spinnerService.show();
-    this.appService.getDocsAppointments(this.id).subscribe((data: any) => {
-      this.bookedSlot = data['appointments']
-      this.spinnerService.hide();
-    });
+    this.getAllAppointments();
   }
   createForm() {
     this.bookingForm = this.fb.group({
@@ -60,21 +56,34 @@ export class BookAppointmentComponent implements OnInit {
     });
 
   }
+
+  getAllAppointments():any {
+    this.spinnerService.show();
+    const reqObj={
+      'isPatient': false,
+      'id':this.id
+    }
+    this.appService.getDocsAppointments(reqObj).subscribe((data: any) => {
+      this.bookedSlot = data['appointments']
+      this.spinnerService.hide();
+      this.updateSlots(new Date())
+    });
+  }
   navigateBooking() {}
   changeDate(evt: any) {
+    this.refreshSlots();
     this.bookingForm.get('slot_number')?.setValue('');
     this.bookingForm.get('slot')?.setValue('');
     this.spinnerService.show();
     this.bookingForm.get('appointment_date')?.setValue(new Date(evt));
     this.updateSlots(new Date(evt));
-  }
+  }  
   updateSlots(evt: any) {
-    if(this.bookedSlot.length){
-      this.bookedSlot.forEach((element: any) => {
-        const date_a = new Date(element.appointment_date).getDate()
-        console.log(new Date(element.appointment_date),new Date(evt))
-        if(new Date(element.appointment_date).toDateString() === new Date(evt).toDateString() ){
-
+    const currentDateSlot = this.bookedSlot.filter((data:any)=>new Date(data.appointment_date).toDateString() === new Date(evt).toDateString() )
+    // alert(currentDateSlot.length);
+    if(currentDateSlot.length){
+      
+      currentDateSlot.forEach((element: any) => {
         const index = Math.trunc(element.slot_number / 3);
         const remain = element.slot_number % 3;
         if(remain === 1) {
@@ -82,14 +91,16 @@ export class BookAppointmentComponent implements OnInit {
         } else if(remain === 2){
           this.timeSlot[index].slot_B.isAvailable = false; 
         } else {
-          this.timeSlot[index].slot_C.isAvailable = false; 
+          this.timeSlot[index-1].slot_C.isAvailable = false; 
         }
-      } else { 
-        this.refreshSlots();
-      }
+      this.spinnerService.hide();
+   
     });
   }
+   else {
+    this.refreshSlots();
     this.spinnerService.hide();
+   }
   }
   refreshSlots() {
     this.timeSlot.filter(data=> {
@@ -105,19 +116,44 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   bookAppointment() {
-    this.spinnerService.show();
-    this.bookingForm.controls
-    this.appService
-      .bookAppointment(this.bookingForm.value)
-      .subscribe((data: any) => {
-        if (data) {
-          this.spinnerService.hide();
-          this.toastr.successToastr(
-            'Appointment Booked Successfully!',
-            'Success'
-          );
-          this.isBooked = true;
-        }
-      });
+    if(new Date() > new Date(this.bookingForm.get('appointment_date')?.value)){
+      this.bookingForm.get('appointment_date')?.setValue('');
+      this.toastr.warningToastr('Please select the future date', 'Warning')
+    } else {
+      if(this.bookingForm.get('appointment_date')?.value === ''){
+        this.toastr.errorToastr(
+          'Please select the Appointment Date!',
+          'Error'
+        );
+      } else if(this.bookingForm.get('slot_number')?.value === ''){
+        this.toastr.errorToastr(
+          'Please select the slot for Appointment!',
+          'Error'
+        );
+      } else if(this.bookingForm.get('reason')?.value === ''){
+        this.toastr.errorToastr(
+          'Reason is required',
+          'Error'
+        );
+      } else {
+        this.spinnerService.show();
+        this.bookingForm.controls
+        this.appService
+          .bookAppointment(this.bookingForm.value)
+          .subscribe((data: any) => {
+            if (data) {
+              this.spinnerService.hide();
+              this.toastr.successToastr(
+                'Appointment Booked Successfully!',
+                'Success'
+              );
+              this.isBooked = true;
+            }
+          });
+    
+      }
+  
+    }
+    
   }
 }

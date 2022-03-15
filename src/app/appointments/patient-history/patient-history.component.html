@@ -1,1 +1,19 @@
-<p>patient-history works!</p>
+<div class="card" style="margin-top: 80px;max-height: 100vh;overflow: auto;width: 56rem;margin-left: 235px;
+height: 290px">
+    <h5 class="card-header">{{appointmentList[0]?.isCancelled ? 'Booking Cancelled': (!isExpired ? 'Booking Confirmed ✅' : 'Booking Expired')}}</h5>
+    <div class="card-body" *ngIf= "!isBooked">
+      <h5 class="card-title">Appointment with Dr {{appointmentList[0]?.doctor_name}}</h5>
+      <p class="card-text">Please check your registered mail for further information! <br>
+       <b>Date:</b> {{appointmentList[0]?.appointment_date | date: 'mediumDate'}} <br>
+       <b>Time:</b> {{appointmentList[0]?.slot}}<br>
+      </p>
+      <a href="#" class="btn btn-primary" *ngIf= "!appointmentList[0]?.isCancelled || !isExpired">Cancel</a> &nbsp;
+      <a class="btn btn-primary" (click)= "router.navigate(['/pages/appointments/search'])">Book Again</a> 
+    </div>
+    <div class="card-body" *ngIf= "isBooked">
+        <h5 class="card-title">You don't have any appointment right now!</h5>
+        <p class="card-text">Click below to Book Appointment <br>
+        </p>
+        <a href="#" class="btn btn-primary">Book</a> &nbsp;
+      </div>
+  </div>

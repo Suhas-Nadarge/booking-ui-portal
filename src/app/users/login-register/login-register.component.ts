@@ -1,3 +1,4 @@
+import { AppointmentService } from './../../services/appointment.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../../services/login.service';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,7 @@ export class LoginRegisterComponent implements OnInit {
   loginForm!: FormGroup
   showLoginError = false;
   isLogin = false;
-  constructor(private fb:FormBuilder,public router:Router, private spinnerService: NgxSpinnerService,
+  constructor(private fb:FormBuilder,public router:Router, public appService: AppointmentService,private spinnerService: NgxSpinnerService,
     public toastr:ToastrManager,
     public loginService: LoginService,
     ) { }
@@ -50,7 +51,7 @@ console.log(requestObj)
         localStorage.setItem('id', data.id)
         localStorage.setItem('firstname', data.firstname)
         localStorage.setItem('lastname', data.lastname)
-
+        this.appService.setUserData(true);
         // localStorage.setItem('fullname', )
         if(data.isDoctor){
           this.router.navigate(['/pages/appointments/view-appointments'])
@@ -74,34 +75,40 @@ console.log(requestObj)
 
 
 registerUser(): any{
-  {
-    this.spinnerService.show();
-    this.showLoginError = false;
-    let requestObj = this.loginForm?.value;
-    requestObj['isDoctor'] = JSON.parse(requestObj['isDoctor'])
-    this.loginService.registerUser(requestObj).subscribe((data:any) => {
-      if(data['status'] === 'success'){
-      this.spinnerService.hide();
-      this.toastr.successToastr('User Registered successfully, check your mail for the confirmation!', 'Success');
-      this.loginForm.reset();
-      this.isLogin = true;
-      // this.router.navigate(['/login'])
-      
-    } else {
-      this.spinnerService.hide();
-
-        this.showLoginError = true;
+  let isInvalid = false;
+    Object.keys(this.loginForm.controls).forEach(element => {
+      if(this.loginForm.controls[element].value === ''){
+        this.toastr.errorToastr(element.toUpperCase()+' is required', 'Error')
+        isInvalid = true;
       }
-      console.log(data);
-    },
-    (err: any)=>{
-      this.spinnerService.hide();
-
-      this.toastr.errorToastr(err['error']['message'] ? err['error']['message'] : 'Something went wrong!', 'Error');
-    console.log(err['error']['message'])
     });
+    if(!isInvalid){
+      this.spinnerService.show();
+      this.showLoginError = false;
+      let requestObj = this.loginForm?.value;
+      requestObj['isDoctor'] = JSON.parse(requestObj['isDoctor'])
+      this.loginService.registerUser(requestObj).subscribe((data:any) => {
+        if(data['status'] === 'success'){
+        this.spinnerService.hide();
+        this.toastr.successToastr('User Registered successfully, check your mail for the confirmation!', 'Success');
+        this.loginForm.reset();
+        this.isLogin = true;
+        
+      } else {
+        this.spinnerService.hide();
+          this.showLoginError = true;
+        }
+        console.log(data);
+      },
+      (err: any)=>{
+        this.spinnerService.hide();
+        this.toastr.errorToastr(err['error']['message'] ? err['error']['message'] : 'Something went wrong!', 'Error');
+        console.log(err['error']['message'])
+      });
+  
+  } 
+    }
+ 
 
 }
 
-}
-}

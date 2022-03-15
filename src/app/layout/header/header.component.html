@@ -10,20 +10,21 @@ width: -webkit-fill-available"> -->
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse"  id="bs4navbar">
-                <ul class="navbar-nav ml-auto"  style="font-size: 20px;">
+                <ul class="navbar-nav ml-auto"  style="font-size: 15px;">
                     <li class="nav-item">
                         <a class="nav-link" (click)= "navigateHome()">Home</a>
                     </li>
-                    
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" (click)= "router.navigate(['/pages/appointments/view-appointments'])">Appointment History</a>
+                        <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'false'" (click)= "router.navigate(['/pages/appointments/search'])">Book Appointment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" (click)= "router.navigate(['/pages/appointments/view-appointments'])" >View Appointments</a>
+                        <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'false'" (click)= "router.navigate(['/pages/appointments/history'])">My Appointments</a>
                     </li>
+                   
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active"(click)= "router.navigate(['/pages/appointments/view-appointments'])">Pricing</a>
+                        <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'true'" (click)= "router.navigate(['/pages/appointments/view-appointments'])" >View Appointments</a>
                     </li>
+         
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active"(click)= "logout()">Logout</a>
                     </li>

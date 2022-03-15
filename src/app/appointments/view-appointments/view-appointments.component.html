@@ -1,7 +1,29 @@
 <div class="container mt-5">
-  <br>
   <h2>All Appointments</h2>
   <br>
+  <ngx-spinner size="large" type= 'ball-beat'></ngx-spinner>
+
+
+
+  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+
+<ng-template #template>
+   <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+         <span aria-hidden="true">×</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      Are you sure, you want to Cancel the Appointment?
+   </div>
+   <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="cancelAppointment(true)">Yes</button> &nbsp;
+      <button type="button" class="btn btn-danger" (click)="cancelAppointment(false)">No</button>
+
+   </div>
+</ng-template>
+  
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -15,15 +37,16 @@
       </tr>
     </thead>
     <tbody>
+      
       <tr *ngFor="let item of appointmentList; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{item?.patient_name}}</td>
         <td>{{item?.reason}}</td>
         <td>{{item?.appointment_date | date: 'mediumDate'}} {{" "+item?.slot}}</td>
-        <td>{{item?.isCancelled ? 'Cancelled' : 'Due'}}</td>
-        <td *ngIf="!item?.isCancelled"><Button class="btn btn-danger btn-sm" (click)="cancelAppointment(i)"> Cancel
+        <td>{{item?.isCancelled ? 'Cancelled' : (item?.appointment_date > today ? 'Due': 'Expired')}}</td>
+        <td *ngIf="!item?.isCancelled"><Button class="btn btn-danger btn-sm" [disabled]="item?.appointment_date < today" (click)="openModal(template);cancel(i);"> Cancel
           </Button></td>
-        <td *ngIf="item?.isCancelled"><Button class="btn btn-secondary btn-sm" disabled> Cancelled </Button></td>
+        <td *ngIf= "item?.isCancelled"><Button class="btn btn-secondary btn-sm" disabled> Cancelled </Button></td>
 
 
       </tr>

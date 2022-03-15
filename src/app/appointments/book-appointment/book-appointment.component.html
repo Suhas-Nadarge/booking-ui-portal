@@ -1,5 +1,7 @@
+
 <div class="container">
   <div class="card">
+    <ngx-spinner size="large" type= 'ball-beat'></ngx-spinner>
     <div class="card-header">
       <b> Dr {{doc_full_Name}}: </b>
       <!-- <a href="#" class="link-dark" (click)= "router.navigate(['/pages/appointments/search'])">Change <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
@@ -17,13 +19,14 @@
       <div class="main-container" [formGroup]= "bookingForm">
         <div class="row">
           <div class="col-md-5"> 
-            <label><b>Reason for visit:</b></label>
+            <label><h6>Reason for visit:</h6></label>
+            <span class="text-danger"><b> *</b></span>
             <input type="text" formControlName="reason" class="form-control"placeholder="">
           </div>
           <div class="col-md-1"></div>
 
           <div class="col-md-4">
-            <label><b>Additional Comments:</b></label>
+            <label><h6>Additional Comments:</h6></label>
             <input type="text" formControlName="additional_comments" class="form-control"
               placeholder="">
           </div>
@@ -34,21 +37,22 @@
           <div class="col-md-5">
             <!-- <h6>Book Appointments</h6> -->
             <article class="calendar-wrapper">
-              <igx-calendar [weekStart]="1" (selected)="changeDate($event)"></igx-calendar>
+              <igx-calendar [weekStart]="1" formControlName="appointment_date" (selected)="changeDate($event)"></igx-calendar>
             </article>
           </div>
           <div class="col-md-1"></div>
 
           <div class="col-md-4">
 
-            <h6> Select Slots</h6>
+            <h6> Select Slots <span class="text-danger"><b> *</b></span> </h6>
+
             <table class="table table-borderless">
 
 
               <tbody>
                 <tr *ngFor="let item of timeSlot; let i = index">
                   <!-- {{i}} -->
-                  <td> <button type="button"
+                  <td> <button type="button" data-toggle="tooltip" data-placement="top" title=""
                       [ngClass]="item.slot_A.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'"
                       [disabled]="!item?.slot_A?.isAvailable"
                       (click)="selectSlot(item?.slot_A?.id,item?.slot_A?.value)">{{item?.slot_A?.value}}</button></td>
