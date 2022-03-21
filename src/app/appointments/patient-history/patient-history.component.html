@@ -2,6 +2,7 @@
 
 <div class="card" style="margin-top: 80px;max-height: 100vh;overflow: auto;width: 56rem;margin-left: 235px;
 height: 290px"> 
+    <ngx-spinner size="large" type= 'ball-beat'></ngx-spinner>
 
     <h5 class="card-header"  *ngIf= "appointmentList.length > 0">{{appointmentList[0]?.isCancelled ? 'Booking Cancelled': (!isExpired ? 'Booking Confirmed ✅' : 'Booking Expired')}}</h5>
     <h5 class="card-header"  *ngIf= "appointmentList.length === 0">No Appointments</h5>
@@ -12,13 +13,13 @@ height: 290px">
        <b>Date:</b> {{appointmentList[0]?.appointment_date | date: 'mediumDate'}} <br>
        <b>Time:</b> {{appointmentList[0]?.slot}}<br>
       </p>
-      <a href="#" class="btn btn-primary" *ngIf= "!appointmentList[0]?.isCancelled || !isExpired">Cancel</a> &nbsp;
-      <a class="btn btn-primary" (click)= "router.navigate(['/pages/appointments/search'])">Book Again</a> 
+      <button class="btn btn-primary" *ngIf= "!appointmentList[0]?.isCancelled || !isExpired" (click)= "cancelAppointment(appointmentList[0])" [disabled]= "appointmentList[0]?.isCancelled || isExpired">{{!appointmentList[0]?.isCancelled ? 'Cancel' : 'Cancelled'}}</button> &nbsp;
+      <button class="btn btn-primary" (click)= "router.navigate(['/pages/appointments/search'])">Book Again</button> 
     </div>
     <div class="card-body"  *ngIf= "appointmentList.length  === 0">
         <h5 class="card-title">You don't have any appointment right now!</h5>
         <p class="card-text">Click below to Book Appointment <br>
         </p>
-        <a href="#" class="btn btn-primary">Book</a> &nbsp;
+        <button (click)= "router.navigate(['/pages/appointments/search'])" class="btn btn-primary">Book</button> &nbsp;
       </div>
   </div>

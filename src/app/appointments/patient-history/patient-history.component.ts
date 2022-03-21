@@ -1,3 +1,4 @@
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { Router } from '@angular/router';
 import { AppointmentService } from './../../services/appointment.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,7 @@ export class PatientHistoryComponent implements OnInit {
   today = new Date()
   appointment_date : any;
   isExpired: boolean =  false;
-  constructor(public spinnerService: NgxSpinnerService, public router: Router,public appService: AppointmentService) { }
+  constructor(public spinnerService: NgxSpinnerService,public toast: ToastrManager, public router: Router,public appService: AppointmentService) { }
 
   ngOnInit(): void {
   this.getAllAppointments()
@@ -37,4 +38,19 @@ export class PatientHistoryComponent implements OnInit {
     })
   }
 
+  cancelAppointment(appObj: any) {
+    this.spinnerService.show();
+    const requestObj = {
+      doctors_id:appObj['doctors_id'],
+      patient_id:localStorage.getItem('id'),
+      app_id: appObj['id']
+    }
+    this.appService.cancelAppointment(requestObj).subscribe((data: any)=>{
+      if(data){    
+    this.spinnerService.hide();
+    this.getAllAppointments(); 
+        this.toast.successToastr('Appointment Cancelled Successfully')
+      }
+    })
+  }
 }
