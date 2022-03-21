@@ -31,7 +31,7 @@ export class PatientHistoryComponent implements OnInit {
       this.spinnerService.hide();
       this.appointmentList = data['appointments'].sort((first: any, second: any) => 0 - (new Date(first.appointment_date) > new Date(second.appointment_date) ? 1 : -1));;
       this.appointment_date = new Date(this.appointmentList[0]?.appointment_date)
-      this.isExpired = this.today > this.appointment_date ? false :true
+      this.isExpired = this.today > this.appointment_date ? true :false
     }
     })
   }

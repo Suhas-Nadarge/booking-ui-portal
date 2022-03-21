@@ -116,6 +116,7 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   bookAppointment() {
+    console.log(new Date(),new Date(this.bookingForm.get('appointment_date')?.value))
     if(new Date() > new Date(this.bookingForm.get('appointment_date')?.value)){
       this.bookingForm.get('appointment_date')?.setValue('');
       this.toastr.warningToastr('Please select the future date', 'Warning')

@@ -1,0 +1,100 @@
+
+
+
+
+
+
+<div class="card" style="width: 100%;">
+    <div class="card-header">
+        <h5>View Calendar</h5>
+    </div>
+    <div class="main-container">
+     
+
+      <div class="row mx-auto" style="border: aliceblue;">
+        <div class="col-md-5">
+          <!-- <h6>Book Appointments</h6> -->
+          <article class="calendar-wrapper">
+            <igx-calendar [weekStart]="1" formControlName="appointment_date" (selected)="changeDate($event)"></igx-calendar>
+          </article>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+
+          <h6>Slots </h6>
+
+          <table class="table table-borderless">
+
+
+            <tbody>
+              <tr *ngFor="let item of timeSlot; let i = index">
+                <!-- {{i}} -->
+                <td> <button type="button" data-toggle="tooltip" data-placement="top" title=""
+                    [ngClass]="item.slot_A.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'"
+                    
+                    >{{item?.slot_A?.value}}</button></td>
+                <td> <button [ngClass]="item.slot_B.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'"
+                   
+                    >{{item?.slot_B?.value}}</button></td>
+                <td> <button [ngClass]="item.slot_C.isAvailable ? 'col btn btn btn-success' : 'col btn btn-danger'"
+                    
+                    >{{item?.slot_C?.value}}</button></td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <div>
+            <div class='box green'></div>&nbsp;Available Appointments
+          </div>
+          <br>
+          <div>
+            <div class='box red'></div>&nbsp; Booked Appointments
+          </div>
+          <br>
+          <div>
+            <div class='box grey'></div>&nbsp;Not Available
+          </div>
+          <!-- <button type="submit" class="btn btn-primary" (click)="bookAppointment()" style="float: right;">Book
+            Appointment</button> -->
+
+          <!-- <div>
+    <b>Reason for visit:</b> <input type="text">
+    <b>Additional comments:</b><input type="text">
+    <button class="primary">Book Appointment</button>
+  </div> -->
+
+        </div>
+
+        <!-- <div class="col-md-4">
+  <form>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inputEmail4">Reason for visit:</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
+     
+    </div>
+    <div class="form-row">
+    
+      <div class="form-group">
+        <label for="inputPassword4">Additional Comments:</label>
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      </div>
+    </div>
+    </form>
+  </div> -->
+      </div>
+      <div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>

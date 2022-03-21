@@ -1,0 +1,47 @@
+.main-container{
+    margin-top: 20px;
+    align-items: center;
+}
+
+.box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    clear: both;
+  }
+  
+  .red {
+    background-color: #fa3e3e;
+  }
+  
+  .green {
+    background-color: green;
+  }
+  
+  .grey {
+    background-color: grey;
+  }
+
+ 
+ .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1600px;
+}
+
+.btn.btn-success:active,
+.btn.btn-success:active {
+    border-color: rgb(158, 152, 152);
+    background-color: rgb(167, 156, 156);
+    // color: $color-primary;
+}
+
+
+
+// button:hover{
+//   background-color:rgb(47, 202, 33);
+// }
+
+// button:focus{
+//   background-color:hsl(241deg 57% 85%);
+// }

@@ -20,7 +20,11 @@ export class LoginRegisterComponent implements OnInit {
     public loginService: LoginService,
     ) { }
   ngOnInit(): void {
-    this.createForm();
+     if(localStorage.getItem('id')){
+      localStorage.getItem('isDoctor') ? this.router.navigate(['/pages/appointments/view-appointments']): this.router.navigate(['/pages/appointments/search'])
+     } else {
+      this.createForm();
+     }
   }
 
 
@@ -77,7 +81,7 @@ console.log(requestObj)
 registerUser(): any{
   let isInvalid = false;
     Object.keys(this.loginForm.controls).forEach(element => {
-      if(this.loginForm.controls[element].value === ''){
+      if(element !== 'id' && this.loginForm.controls[element].value === ''){
         this.toastr.errorToastr(element.toUpperCase()+' is required', 'Error')
         isInvalid = true;
       }

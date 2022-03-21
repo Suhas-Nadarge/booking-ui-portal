@@ -20,7 +20,9 @@ width: -webkit-fill-available"> -->
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'false'" (click)= "router.navigate(['/pages/appointments/history'])">My Appointments</a>
                     </li>
-                   
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'true'" (click)= "router.navigate(['/pages/appointments/calendar'])" >Calendar</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" *ngIf= "isDoctor() === 'true'" (click)= "router.navigate(['/pages/appointments/view-appointments'])" >View Appointments</a>
                     </li>

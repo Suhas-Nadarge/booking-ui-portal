@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { AuthGuard } from '../services/auth.guard';
 
 @NgModule({
   declarations: [BookAppointmentComponent,SearchDoctorComponent,ViewAppointmentsComponent, PatientHistoryComponent, CalendarComponent],

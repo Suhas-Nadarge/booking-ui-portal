@@ -1,5 +1,8 @@
+
+
 <div class="card" style="margin-top: 80px;max-height: 100vh;overflow: auto;width: 56rem;margin-left: 235px;
 height: 290px">
+
     <h5 class="card-header">{{appointmentList[0]?.isCancelled ? 'Booking Cancelled': (!isExpired ? 'Booking Confirmed ✅' : 'Booking Expired')}}</h5>
     <div class="card-body" *ngIf= "!isBooked">
       <h5 class="card-title">Appointment with Dr {{appointmentList[0]?.doctor_name}}</h5>
