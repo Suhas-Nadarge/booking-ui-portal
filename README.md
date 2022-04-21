@@ -22,7 +22,7 @@ View Appointment History
 ## Technologies and Modules Used ##
 
 
-## Angular - FrontEnd
+## 1. Angular - FrontEnd
 
 UX: HTML,CSS Bootstrap
 
@@ -38,7 +38,7 @@ Ngx-angular-autocomplete: This module is used to show the auto suggestions in se
 
 Ignite-ui-angular: To show the calendar on booking page, we have used igcalendar from this module
 
-## Flask - Backend
+## 2. Flask - Backend
 
 Flask-Bcrypt - To encrypt the user password before storing to the database.
 
