@@ -8,8 +8,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 
 ## Features
-Login/Register
-Search Doctors
+  Login/Register
+  Search Doctors
 Book Appointment
 Cancel Appointment
 View Appointment History
